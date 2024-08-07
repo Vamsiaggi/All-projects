@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3;
+    margin: 0;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-screen {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #252525;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.key {
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: #eaeaea;
+}
+
+.operator {
+    background-color: #ff9500;
+    color: white;
+}
+
+.operator:hover {
+    background-color: #ff7f00;
+}
+
+.equal-sign {
+    background-color: #4caf50;
+    color: white;
+    grid-column: span 4;
+}
+
+.equal-sign:hover {
+    background-color: #45a049;
+}
+
+.all-clear {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.all-clear:hover {
+    background-color: #c62828;
+}
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-screen">0</div>
+        <div class="calculator-keys">
+            <div class="key operator" data-value="+">+</div>
+            <div class="key operator" data-value="-">-</div>
+            <div class="key operator" data-value="*">&times;</div>
+            <div class="key operator" data-value="/">÷</div>
+
+            <div class="key" data-value="7">7</div>
+            <div class="key" data-value="8">8</div>
+            <div class="key" data-value="9">9</div>
+            <div class="key" data-value="4">4</div>
+            <div class="key" data-value="5">5</div>
+            <div class="key" data-value="6">6</div>
+            <div class="key" data-value="1">1</div>
+            <div class="key" data-value="2">2</div>
+            <div class="key" data-value="3">3</div>
+            <div class="key" data-value="0">0</div>
+            <div class="key" data-value=".">.</div>
+            <div class="key all-clear" data-value="all-clear">AC</div>
+
+            <div class="key equal-sign" data-value="=">=</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

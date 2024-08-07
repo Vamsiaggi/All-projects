@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'poppins',sans-serif;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(254,254,254);
+        }
+        .navbar{
+            width: 100%;
+            padding: 3rem 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 4rem;
+            background:rgb(26,25,25);
+        }
+        .navbar h2{
+            color: white;
+        }
+        ul{
+            display: flex;
+        }
+        li{
+            list-style: none;
+        }
+        ul li a{
+            text-decoration: none;
+            padding: 5px 1rem;
+            margin: 0 10px;
+            color: rgb(232,228,102);
+            position:relative;
+        }
+        ul li a::before{
+            content:'';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            border:2px solid rgb(232,228,102);
+            border-top: 2px solid rgb(232,228,102);
+            border-right: 2px solid rgb(232,228,102);
+            transition: all,1s;
+        }
+        ul li a::after{
+            content:'';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            box-sizing: border-box;
+            border-bottom: 2px solid rgb(232,228,102);
+            border-right: 2px solid rgb(232,228,102);
+            transition: all,1s;
+        }
+        ul li a:hover:after,
+        ul li a:hover::before{
+            content: '';
+            width: 10%;
+            height: 20%;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Basic Web</h2>
+        <ul>
+            <li><a href="home\home.html">Home</a></li>
+            <li><a href="about\about.html">About</a></li>
+            <li><a href="services\service.html">Services</a></li>
+            <li><a href="about\about.html">About Us</a></li>
+            <li><a href="contect\contect.html">contact Us</a></li>
+        </ul>
+    </div>
+    <style>
+        img{
+            height: 500px;
+            width: 500px;
+        }
+        h1{
+            background-color: aquamarine;
+        }
+    </style>
+    <img src="image\tom&jerry.jpg">
+    <h1><marquee behaviour=""direction="right">tom&jerry</marquee></h1>
+</body>
+</html>

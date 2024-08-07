@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curved Table Calculator</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: #61dafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px auto;
+            background-color: #3b3b3b;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        tr, td {
+            border: 1px solid #444;
+        }
+        td {
+            padding: 0;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px; /* Reduced height */
+            font-size: 1.5em;
+            text-align: right;
+            padding-right: 10px;
+            box-sizing: border-box;
+            border: none;
+            background-color: #3b3b3b;
+            color: #61dafb;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        input[type="button"] {
+            width: 100%;
+            height: 50px; /* Reduced height */
+            font-size: 1.2em; /* Reduced font size */
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        .number {
+            background-color: #5a5a5a;
+        }
+        .operator {
+            background-color: #f39c12;
+        }
+        .equals {
+            background-color: #e74c3c;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" id="display" disabled></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="number" value="7" onclick="appendToDisplay('7')"></td>
+            <td><input type="button" class="number" value="8" onclick="appendToDisplay('8')"></td>
+            <td><input type="button" class="number" value="9" onclick="appendToDisplay('9')"></td>
+            <td><input type="button" class="operator" value="/" onclick="appendToDisplay('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="number" value="4" onclick="appendToDisplay('4')"></td>
+            <td><input type="button" class="number" value="5" onclick="appendToDisplay('5')"></td>
+            <td><input type="button" class="number" value="6" onclick="appendToDisplay('6')"></td>
+            <td><input type="button" class="operator" value="*" onclick="appendToDisplay('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="number" value="1" onclick="appendToDisplay('1')"></td>
+            <td><input type="button" class="number" value="2" onclick="appendToDisplay('2')"></td>
+            <td><input type="button" class="number" value="3" onclick="appendToDisplay('3')"></td>
+            <td><input type="button" class="operator" value="-" onclick="appendToDisplay('-')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" class="number" value="0" onclick="appendToDisplay('0')"></td>
+            <td><input type="button" class="number" value="." onclick="appendToDisplay('.')"></td>
+            <td><input type="button" class="operator" value="+" onclick="appendToDisplay('+')"></td>
+        </tr>
+        <tr>
+            <td colspan="4"><input type="button" class="equals" value="=" onclick="calculateResult()"></td>
+        </tr>
+    </table>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                alert('Invalid calculation');
+            }
+        }
+    </script>
+</body>
+</html>

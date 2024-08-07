@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory card game</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-color: rgb(220, 86, 8);
+            display: flex;
+        }
+        h1{
+            width: 500px;
+            padding-top: 10px;
+            padding-bottom: 100;
+            position: absolute;
+            left: 32%;
+            text-align: center;
+        }
+        .container{
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+        .card{
+            width: 23%;
+            height: 23%;
+            margin: 5px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .card:active{
+            transform: scale(0.95);
+            transition: transform 0.2 ease-in-out;
+        }
+        .card.flip{
+            transform: rotateY(180deg);
+            cursor: pointer;
+        }
+        .frontside, .backside{
+            background-color: bisque;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+        .frontside{
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Your Memory</h1>
+    <div class="container">
+        <div class="card" data-image="c++">
+            <img src="image\images.jpeg"  class="frontside" alt="C++">
+            <img src="image\download.jpeg"  class="backside"  alt="backlog">
+         </div>
+         <div class="card" data-image="c++">
+            <img src="image\images.jpeg" class="frontside" alt="C++">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="CSS">
+            <img src="image\css.jpeg" class="frontside" alt="CSS"> 
+            <img src="image\download.jpeg"  class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="CSS">
+            <img src="image\css.jpeg" class="frontside" alt="CSS"> 
+            <img src="image\download.jpeg"  class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="html">
+            <img src="image\download (1).jpeg" class="frontside" alt="html">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="html">
+            <img src="image\download (1).jpeg" class="frontside" alt="html">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="java">
+            <img src="image\download (2).jpeg" class="frontside" alt="java">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="java">
+            <img src="image\download (2).jpeg" class="frontside" alt="java">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="javascript">
+            <img src="image\download (3).jpeg" class="frontside" alt="javascript">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="javascript">
+            <img src="image\download (3).jpeg" class="frontside" alt="javascript">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="kotlin">
+            <img src="image\download (4).jpeg" class="frontside" alt="kotlin">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="kotlin">
+            <img src="image\download (4).jpeg" class="frontside" alt="kotlin">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="php">
+            <img src="image\download (5).jpeg" class="frontside" alt="php">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="php">
+            <img src="image\download (5).jpeg" class="frontside" alt="php">
+            <img src="image\download.jpeg" class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="python">
+            <img src="image\download (6).jpeg" class="frontside" alt="python">
+            <img src="image\download.jpeg"  class="backside" alt="backlog">
+         </div>
+         <div class="card" data-image="python">
+            <img src="image\download (6).jpeg" class="frontside" alt="python">
+            <img src="image\download.jpeg"  class="backside" alt="backlog">
+         </div>
+ </div>
+ <script>
+    const cards=document.querySelectorAll(".card");
+    var firstcard, secondcard;
+    var lock=false;
+    var isFlipped=false;
+    cards.forEach(card =>card.addEventListener("click",flip));
+    function flip(){
+        if(lock)
+        return;
+        if(this==firstcard)
+        return;
+        this.classList.add("flip");
+        if(!isFlipped){
+            isFlipped=true;
+            firstcard=this;
+            return;
+        }
+        secondcard=this;
+        check();
+    }
+    function check(){
+        var isMatch=firstcard.dataset.image===secondcard.dataset.image;
+        isMatch? success(): failed();
+    }
+    function success(){
+        firstcard.removeEventListener("click",flip);
+        secondcard.removeEventListener("click",flip);
+        reset();
+    }
+    function failed(){
+        lock=true;
+        setTimeout(()=>{
+            firstcard.classList.remove("flip");
+            secondcard.classList.remove("flip");
+            reset();
+        }, 1000);
+    }
+    function reset(){
+        [isFlipped,lock]=[false,false];
+        [firstcard,secondcard]=[null,null]
+    }
+    (function shuffle(){
+        cards.forEach(card=>{
+            var position=Math.floor(Math.random()*16);
+            card.style.order=position;
+        });
+    })();
+</script>
+</body>
+</html>

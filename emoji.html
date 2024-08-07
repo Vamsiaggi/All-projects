@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-widt>, initial-scale=1.0">
+    <title>Random Emojis</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #ccc;
+        }
+        #emoji{
+            font-size: 10rem;
+            filter: grayscale(1);
+            transition-property: transfrom,filter;
+            transition-duration: 200ms;
+            cursor: pointer;
+        }
+        #emoji:hover{
+            transform: scale(1.5);
+            filter: grayscale(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="emoji">&#128512</div>
+    <script>const btn = document.querySelector("#emoji");
+    const emojis=[
+        "&#128536",
+        "&#128537",
+        "&#128538",
+        "&#128513",
+        "&#128517",
+        "&#128519",
+        "&#128518",
+        "&#128520",
+        "&#128521",
+        "&#128522",
+        "&#128523",
+        "&#128524",
+        "&#128525",
+        "&#128526",
+
+    ];
+    btn.addEventListener("mouseover",() =>{
+        btn.innerHTML =emojis[Math.floor(Math.random() * emojis.length)];
+    });
+    
+    </script>
+</body>
+</html>
